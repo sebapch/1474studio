@@ -13,16 +13,17 @@ function PlayerControls(props) {
   return (
     <div className="music-player--controls">
       <button className="skip-btn" onClick={() => props.SkipSong(false)}>
-        <FontAwesomeIcon icon={faBackward} />
+        <FontAwesomeIcon icon={faBackward} color='white'/>
       </button>
       <button
         className="play-btn"
+        
         onClick={() => props.setIsPlaying(!props.isPlaying)}
       >
-        <FontAwesomeIcon icon={props.isPlaying ? faPause : faPlay} />
+        <FontAwesomeIcon icon={props.isPlaying ? faPause : faPlay} color='white'/>
       </button>
       <button className="skip-btn" onClick={() => props.SkipSong()}>
-        <FontAwesomeIcon icon={faForward} />
+        <FontAwesomeIcon icon={faForward} color='white'/>
       </button>
     </div>
   );

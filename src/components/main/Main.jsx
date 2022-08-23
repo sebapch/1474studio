@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import './Main.css';
 import Player from '../player/Player'
+import Baguettes from '../../songs_images/baguettes.jpg'
 
 const Main = () => {
 
   const [songs,setSongs] = useState([
 
     {
-        "title": "$orries",
-        "artist": "Peachy!",
-        "album": " Shiloh",
-        "track": "$orries",
+        "title": "BAGUETTES",
+        "artist": "1474STUDIO",
+        "album": " FREE",
+        "track": "BAGUETTES",
         "year": "1",
-        "img_src": "./songs_images/$orries_Cover (front)_e.jpg",
+        "img_src": {Baguettes},
         "src": "./songs/$orries.mp3"
     },
     {
@@ -42,7 +43,7 @@ useEffect(()=>{
 
   return (
     <div className="App">
-    <Player currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} nextSongIndex={nextSongIndex} songs={songs} />
+      <Player currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} nextSongIndex={nextSongIndex} songs={songs} />
     </div>
   )
 }
