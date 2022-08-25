@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logo from '../../assets/1474.jpg';
+import Logo from '../../assets/logo1474.jpeg';
 
 const pages = ['Beats', 'Contacto'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -40,7 +40,7 @@ const Nav = () => {
       <AppBar position="static" style={{color: 'white', backgroundColor: 'black'}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <img src={Logo} alt='logo' width="35px" />
+            <img src={Logo} alt='logo' width="100px" />
             <Typography
               variant="h6"
               noWrap
