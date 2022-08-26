@@ -1,28 +1,77 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import {Container, Col, Row } from 'react-bootstrap'
 import './Playlist.css'
+import { UserContext } from "../../context/userContext"; 
+import PILLS from '../../songs/PILLS.mp3'
 import PILLSPIC from '../../songs_covers/PILLSPic.jpg'
+import MALBEC from '../../songs/MALBEC.mp3'
+import MALBECPIC from '../../songs_covers/MALBEC.jpg'
+import LIGHTITUP from '../../songs/LIGHTITUP.mp3'
+import LIGHTPIC from '../../songs_covers/LIGHT.jpg'
+import BAGUETTES from '../../songs/BAGUETTES.mp3'
+import BAGUETTESPIC from '../../songs_covers/Baguettes.jpg'
+import { BsPlay } from 'react-icons/bs';
+import { BsPause } from 'react-icons/bs';
+
+
 
 const lista = [
     {
-    img: {PILLSPIC},
+    
+    img: PILLSPIC,
     titulo: 'PILLS',
     tiempo: '2:40',
     BPM: '120',
-    TAGS: '#dark'
+    TAGS: '#dark',
+    song: PILLS
 },
 {
-    img: {PILLSPIC},
-    titulo: 'PILLS',
+    
+    img: MALBECPIC,
+    titulo: 'MALBEC',
     tiempo: '2:40',
     BPM: '120',
-    TAGS: '#dark'
+    TAGS: '#dark',
+    song: MALBEC
 },
+{
+    
+    img: LIGHTPIC,
+    titulo: 'LIGHT IT UP',
+    tiempo: '2:40',
+    BPM: '120',
+    TAGS: '#dark',
+    song: LIGHTITUP
+},
+{
+    
+    img: BAGUETTESPIC,
+    titulo: 'BAGUETTES',
+    tiempo: '2:40',
+    BPM: '120',
+    TAGS: '#dark',
+    song: BAGUETTES
+}
 
 ]
 
 
 const Playlist = () => {
+    
+    const {selectedTrack, setSelectedTrack, mp3, setMp3, isPlaying, setIsPlaying, audio, setAudio } = useContext(UserContext);
+
+
+    const playTrack = (i) =>{
+        audio.pause()
+        setIsPlaying(!isPlaying);
+        setSelectedTrack(lista[i])
+        setMp3(lista[i].song)
+        setAudio(lista[i].song)
+        audio.play()
+    }
+
+    console.log(audio);
+
   return (
     <div className='playlist-container'>
     <Container style={{paddingTop: '2rem'}}>
@@ -43,29 +92,29 @@ const Playlist = () => {
                 <label>Tags</label> 
             </Col>
             <Col>
-                <label>Play</label> 
+                <label ></label> 
             </Col>
         </Row>
         {lista.map((track, index)=>(
-
-        <Row className='playlistRow' >
+            
+        <Row className='playlistRow' key={index}>
             <Col>
-               <img src={PILLSPIC} alt='cover' width='50px' />
+               <img src={track.img} alt='cover' width='50px' />
             </Col>
             <Col>
                 <label>{track.titulo}</label> 
             </Col>
             <Col>
-                <label>{index}</label> 
+                <label>{track.tiempo}</label> 
             </Col>
             <Col>
-                <label>BPM</label> 
+                <label>{track.BPM}</label> 
             </Col>
             <Col>
-                <label>Tags</label> 
+                <label>{track.TAGS}</label> 
             </Col>
             <Col>
-                <label>Play</label> 
+                <button onClick={()=>playTrack(index)}>{isPlaying ? <BsPlay/> : <BsPause/>}</button>
             </Col>
         </Row>
         ))}
